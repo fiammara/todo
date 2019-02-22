@@ -1,12 +1,10 @@
 package repository;
 
-import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
 
+import org.springframework.data.mongodb.repository.MongoRepository;
 import model.Todo;
 
-public interface TodoItemRepository  extends CrudRepository<Todo, Long>{
-	@Override
-    List<Todo> findAll();
+public interface TodoItemRepository extends MongoRepository<Todo, Long>{
+	
 }

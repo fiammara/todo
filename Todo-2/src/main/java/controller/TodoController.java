@@ -31,7 +31,7 @@ public class TodoController {
 		return todoService.findById(id);
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "/addTodo")
-	public long save(@RequestBody Todo todo) {
+	public String save(@RequestBody Todo todo) {
 		todoService.addTodo(todo);
 
 		return todo.getId();
