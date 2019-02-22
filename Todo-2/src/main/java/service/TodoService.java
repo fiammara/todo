@@ -10,5 +10,5 @@ public interface TodoService {
 
 	void addTodo(Todo todo);
 
-	Todo findById(long id);
+	Todo findById(String id);
 }

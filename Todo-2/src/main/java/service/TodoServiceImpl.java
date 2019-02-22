@@ -24,7 +24,7 @@ public class TodoServiceImpl implements TodoService {
 	}
 
 	@Override
-	public Todo findById(long id) {
+	public Todo findById(String id) {
 		Optional<Todo> result = todoItemRepository.findById(id);
 
 		if (result.isPresent()) {

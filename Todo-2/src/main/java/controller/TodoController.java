@@ -27,7 +27,7 @@ public class TodoController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="/{id}")
-	public Todo getTodo(@PathVariable final long id) {
+	public Todo getTodo(@PathVariable final String id) {
 		return todoService.findById(id);
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "/addTodo")
