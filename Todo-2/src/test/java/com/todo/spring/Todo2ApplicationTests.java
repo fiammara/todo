@@ -16,11 +16,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
-
-import model.Todo;
-import repository.TodoItemRepository;
-import service.TodoService;
+import com.todo.spring.model.Todo;
+import com.todo.spring.repository.TodoItemRepository;
+import com.todo.spring.service.TodoService;
 
 
 @EnableAutoConfiguration

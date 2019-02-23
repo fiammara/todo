@@ -1,10 +1,12 @@
-package service;
+package com.todo.spring.service;
 
 import java.util.List;
 
-import model.Todo;
+import org.springframework.stereotype.Service;
 
+import com.todo.spring.model.Todo;
 
+@Service
 public interface TodoService {
 	List<Todo> findAllTodos();
 

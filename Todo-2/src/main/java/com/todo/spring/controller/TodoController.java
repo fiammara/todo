@@ -1,37 +1,50 @@
-package controller;
+package com.todo.spring.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import model.Todo;
-import service.TodoService;
 
+import com.todo.spring.model.Todo;
+import com.todo.spring.service.TodoService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
+@CrossOrigin
 @RestController
+@Api(value = "todo")
 @RequestMapping("/api/todos")
 
-@CrossOrigin(origins = "http://localhost:3000")
 public class TodoController {
 	
 	@Autowired
 	private TodoService todoService;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	
+	@GetMapping
+	@ApiOperation(value = "Get list of todos", notes = "Returns all todos")
 	public List<Todo> findAllTodos() {
 		return todoService.findAllTodos();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value="/{id}")
+	@GetMapping(path = "{id}")
+	@ApiOperation(value = "Get todo", notes = "Returns todo by id")
 	public Todo getTodo(@PathVariable final String id) {
 		return todoService.findById(id);
 	}
-	@RequestMapping(method = RequestMethod.POST, value = "/addTodo")
-	public String save(@RequestBody Todo todo) {
+	
+	@PostMapping
+	@ApiOperation(value = "Add todo", notes = "Adds new todo")
+
+	public String save(@ApiParam @RequestBody Todo todo) {
 		todoService.addTodo(todo);
 
 		return todo.getId();

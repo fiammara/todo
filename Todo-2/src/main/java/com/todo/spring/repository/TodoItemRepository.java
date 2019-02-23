@@ -1,9 +1,11 @@
-package repository;
+package com.todo.spring.repository;
+
 
 
 import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import model.Todo;
+
+import com.todo.spring.model.Todo;
 
 public interface TodoItemRepository extends MongoRepository<Todo, String>{
 

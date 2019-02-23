@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import TodoItem from './TodoItem';
-
-
+import Modal from 'react-modal'
+import ItemAddComponent from './ItemAddComponent';
 
 class TodoList extends Component {
     constructor(props) {
@@ -13,8 +13,14 @@ class TodoList extends Component {
                 id: '',
                 name: '',
                
-            }],            
-        };       
+            }], 
+            newItem: {
+               
+                name: '',
+               
+            },           
+        };     
+          
     }
 
     componentDidMount() {
@@ -29,7 +35,19 @@ class TodoList extends Component {
         }); 
     }
 
-   
+    openAddModal = () => {
+        this.setState({
+            addModal: true
+        });
+    }
+    addItem = () => {
+        const { name} = this.state.newItem;
+        alert ("added")
+        axios.post("http://localhost:8080/api/todos/addTodo", {name}).then(
+            this.getData()
+        );
+       
+    }
     render() {
         return(
             <div>
@@ -38,7 +56,11 @@ class TodoList extends Component {
                 <br/>
                 <h3>New item</h3>
 
-                <button className="btn btn-info">Add</button>
+                <button onClick={this.openAddModal} className="btn btn-info">Add</button>
+
+<Modal isOpen={this.state.addModal} onRequestClose={this.closeAddModal}>
+    <ItemAddComponent cancel={this.closeAddModal} add={this.addItem} changed={this.addInputChanged}/>
+</Modal>
               
 
                 <table className = "table">
