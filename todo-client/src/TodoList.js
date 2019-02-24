@@ -69,11 +69,7 @@ class TodoList extends Component {
     render() {
         return (
             <div>
-                <br />
-                <br />
-                <br />
-
-                <button onClick={this.openAddModal} className="btn btn-info">Add new</button>
+               
 
                 <Modal isOpen={this.state.addModal} onRequestClose={this.closeAddModal}>
                     <ItemAddComponent cancel={this.closeAddModal} add={this.handleOnAddItem} changed={this.addInputChanged} />
@@ -81,13 +77,7 @@ class TodoList extends Component {
 
 
                 <table className="table">
-                    <thead>
-                        <tr>
-
-                            <th></th>
-                            <th></th>
-                            <th></th></tr>
-                    </thead>
+                    
 
                     <tbody>
                         {this.state.todos.map((todo, index) => {
@@ -95,6 +85,8 @@ class TodoList extends Component {
                         })}
                     </tbody>
                 </table>
+                <br />
+                <button onClick={this.openAddModal} className="btn btn-info">Add new</button>
             </div>
         );
     }
