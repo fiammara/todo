@@ -53,17 +53,18 @@ class TodoList extends Component {
     addItem = () => {
 
         const { name } = this.state.newItem;
-
+      
         axios.post("http://localhost:8080/api/todos", { name }).then(
             this.getData()
         );
     }
     deleteItem = (e) => {
-
+       
         axios.delete("http://localhost:8080/api/todos/" + e).then(
             this.getData(),
             window.location.reload()
         );
+       
     }
     render() {
         return (

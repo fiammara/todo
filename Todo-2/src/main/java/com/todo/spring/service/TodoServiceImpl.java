@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.todo.spring.model.ArchiveItem;
 import com.todo.spring.model.Todo;
+import com.todo.spring.repository.ArchiveRepository;
 import com.todo.spring.repository.TodoItemRepository;
 
 @Service
@@ -12,6 +15,8 @@ public class TodoServiceImpl implements TodoService {
 	
 	@Autowired
 	private TodoItemRepository todoItemRepository;
+	@Autowired
+	private ArchiveRepository archiveRepository;
 	
 	@Override
 	public List<Todo> findAllTodos() {
@@ -38,8 +43,13 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public void deleteTodo(String id) {
-		todoItemRepository.deleteById(id);
+		Todo todo= findById(id);
+		ArchiveItem item=new ArchiveItem();
+		item.setId(id);
+		item.setName(todo.getName());
 		
+		todoItemRepository.deleteById(id);		
+		archiveRepository.save(item);
 	}
 
 }
