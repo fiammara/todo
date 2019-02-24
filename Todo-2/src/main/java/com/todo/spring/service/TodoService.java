@@ -13,4 +13,6 @@ public interface TodoService {
 	void addTodo(Todo todo);
 
 	Todo findById(String id);
+
+	void deleteTodo(String id);
 }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import TodoItem from './TodoItem';
 import Modal from 'react-modal'
@@ -9,30 +9,27 @@ class TodoList extends Component {
         super(props);
 
         this.state = {
+            isAddItemModalOpen: false,
             todos: [{
                 id: '',
-                name: '',
-               
-            }], 
+                name: ''
+            }],
             newItem: {
-               
-                name: '',
-               
-            },           
-        };     
-          
+                name: ''
+            },
+        };
     }
 
     componentDidMount() {
         this.getData();
-      
+
     }
 
     getData() {
         axios.get("http://localhost:8080/api/todos").then((response) => {
-            this.setState({todos: response.data});
-           
-        }); 
+            this.setState({ todos: response.data });
+
+        });
     }
 
     openAddModal = () => {
@@ -40,42 +37,60 @@ class TodoList extends Component {
             addModal: true
         });
     }
+    closeAddModal = () => {
+        this.setState({
+            addModal: false
+        });
+    }
+    addInputChanged = (propertyName) => (event) => {
+        alert("hello")
+        this.setState({ [propertyName]: event.target.value });
+
+    }
+    handleOnAddItem() {
+        this.setState({ isAddCardModalOpen: false });
+    }
     addItem = () => {
-        const { name} = this.state.newItem;
-        alert ("added")
-        axios.post("http://localhost:8080/api/todos/addTodo", {name}).then(
+
+        const { name } = this.state.newItem;
+
+        axios.post("http://localhost:8080/api/todos", { name }).then(
             this.getData()
         );
-       
+    }
+    deleteItem = (e) => {
+
+        axios.delete("http://localhost:8080/api/todos/" + e).then(
+            this.getData(),
+            window.location.reload()
+        );
     }
     render() {
-        return(
+        return (
             <div>
-                <br/>
-                <br/>
-                <br/>
-                <h3>New item</h3>
+                <br />
+                <br />
+                <br />
 
-                <button onClick={this.openAddModal} className="btn btn-info">Add</button>
+                <button onClick={this.openAddModal} className="btn btn-info">Add new</button>
 
-<Modal isOpen={this.state.addModal} onRequestClose={this.closeAddModal}>
-    <ItemAddComponent cancel={this.closeAddModal} add={this.addItem} changed={this.addInputChanged}/>
-</Modal>
-              
+                <Modal isOpen={this.state.addModal} onRequestClose={this.closeAddModal}>
+                    <ItemAddComponent cancel={this.closeAddModal} add={this.handleOnAddItem} changed={this.addInputChanged} />
+                </Modal>
 
-                <table className = "table">
+
+                <table className="table">
                     <thead>
                         <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        
-                        <th></th>
-                        <th></th></tr>
+
+                            <th></th>
+                            <th></th>
+                            <th></th></tr>
                     </thead>
 
                     <tbody>
                         {this.state.todos.map((todo, index) => {
-                            return <TodoItem key={todo.id} arrayId={index} data={todo} />
+                            return <TodoItem key={todo.id} arrayId={index} data={todo} delete={this.deleteItem} />
                         })}
                     </tbody>
                 </table>

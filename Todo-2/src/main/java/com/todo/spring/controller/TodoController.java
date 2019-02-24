@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.todo.spring.model.Todo;
 import com.todo.spring.service.TodoService;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -41,12 +39,17 @@ public class TodoController {
 		return todoService.findById(id);
 	}
 	
-	@PostMapping
+	
 	@ApiOperation(value = "Add todo", notes = "Adds new todo")
-
+	@RequestMapping(method = RequestMethod.POST, value="/addTodo")
 	public String save(@ApiParam @RequestBody Todo todo) {
 		todoService.addTodo(todo);
 
 		return todo.getId();
+	}
+	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
+	public String deleteTodo(@PathVariable String id) {
+		todoService.deleteTodo(id);
+		return "todo deleted";
 	}
 }

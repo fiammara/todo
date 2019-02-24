@@ -1,18 +1,13 @@
 import React from 'react';
 
 const TodoItem = (props) => {
-    return(
+    return (
         <tr>
-            <td>{props.data.id}</td>
-            <td>{props.data.name}</td>
-            
-            <td>
-                <button className="btn btn-success" >Button</button>
-            </td>
 
+            <td>{props.data.name}</td>
             <td>
-                <button className="btn btn-danger" >Button</button>
-            </td>
+                <button className="btn btn-danger" onClick={() =>
+                    props.delete(props.data.id)}>Archive</button></td>
         </tr>
     )
 }

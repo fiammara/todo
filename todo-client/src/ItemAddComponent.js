@@ -1,30 +1,72 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 
-const ItemAddComponent = (props) => {
-    return(
-        <div>
-            <div className="container col-6 formBody">
-				<div className="panel panel-default formPanel">
-					<div className="panel-body formPanelBody">
-						<form onSubmit={() => props.add}>
-							<input type="hidden" name="Id"/>
+class ItemAddComponent extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			todos: [{
+				name: '',
 
-							<div className="form-group">
-								<input type="text" className="form-control" name="name"/>
+			}],
+		}
+	}
 
-								
-							</div>
+	handleChangeFor = (property) => (event) => {
+		this.setState({ [property]: event.target.value });
+	}
 
-							<div className="btn-group align-self-center d-flex justify-content-center formButtons">
-								<button onClick={props.cancel} className="btn btn-danger">Return</button>
-								<button type="submit" className="btn btn-success">Submit</button>
-							</div>
-						</form>
+	addItem = event => {
+		event.preventDefault();
+
+		const newItem = {
+			name: this.state.name,
+
+		}
+
+		axios.post("http://localhost:8080/api/todos/addTodo", newItem).then(window.location.replace('/todos'))
+	}
+
+	render() {
+		return (
+
+			<div>
+				<br />
+				<br />
+				<br />
+				<br />
+
+				<div className="container col-6 formBody">
+					<div className="panel panel-default formPanel">
+						<div className="panel-body formPanelBody">
+							<form>
+								<div className="form-group">
+
+									<input
+										type="text"
+										className="form-control"
+										name="holderName"
+										value={this.name}
+										onChange={this.handleChangeFor("name")}
+									/>
+
+								</div>
+
+								<div className="btn-group align-self-center d-flex justify-content-center formButtons">
+									<button onClick={this.props.onCloseModal} className="btn btn-danger">Cancel</button>
+									<button onClick={this.addItem} className="btn btn-success">OK</button>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
+
+				<br />
+				<br />
 			</div>
-        </div>
-    )
+		)
+	}
 }
+
 
 export default ItemAddComponent;
