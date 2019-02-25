@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   
-
 }
 
 .NavContainer {
@@ -38,4 +37,42 @@ li {
 .link {
   text-decoration: none;
   color: aliceblue;
+}
+table {
+  background-color: #8c8e92;
+  margin-left: 20px;
+}
+tr {
+  height:30px;
+}
+button {  
+  background-color: #b7b9bd;
+}
+.addButton {
+  margin-bottom: 10px;
+  height:30px;
+}
+.addModal {
+  height:170px;
+  width:400px;
+  background-color: rgb(154, 160, 158);
+  margin-top:350px;
+  margin-left:100px;
+  padding-left:10px;
+  padding-top:10px;
+}
+input {
+  width: 90%;
+  height:25px;
+  margin-bottom:15px;
+  border: 1px solid rgb(116, 114, 114);
+  
+}
+.inputButton {
+  margin: 2px;
+  height:30px;
+  
+}
+p {
+  color: #06080c;
 }

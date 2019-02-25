@@ -31,39 +31,32 @@ class ItemAddComponent extends Component {
 		return (
 
 			<div>
-				<br />
-				<br />
-				<br />
-				<br />
+				<p>Name your todo</p>
 
-				<div className="container col-6 formBody">
-					<div className="panel panel-default formPanel">
-						<div className="panel-body formPanelBody">
-							<form>
-								<div className="form-group">
+				<div >
+					<form>
+						<div className="form-group">
 
-									<input
-										type="text"
-										className="form-control"
-										name="holderName"
-										value={this.name}
-										onChange={this.handleChangeFor("name")}
-									/>
-
-								</div>
-
-								<div className="btn-group align-self-center d-flex justify-content-center formButtons">
-									<button onClick={this.props.onCloseModal} className="btn btn-danger">Cancel</button>
-									<button onClick={this.addItem} className="btn btn-success">OK</button>
-								</div>
-							</form>
+							<input
+								type="text"
+								autocomplete="off"
+								className="form-control"
+								value={this.name}
+								onChange={this.handleChangeFor("name")}
+							/>
 						</div>
-					</div>
-				</div>
 
-				<br />
-				<br />
+						<div className="btn-group">
+							<button onClick={this.props.onCloseModal} className="inputButton">Cancel</button>
+							<button onClick={this.addItem} className="inputButton">OK</button>
+						</div>
+					</form>
+				</div>
 			</div>
+
+
+
+
 		)
 	}
 }

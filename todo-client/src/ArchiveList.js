@@ -30,7 +30,7 @@ class ArchiveList extends Component {
     render() {
         return (
             <div>
-               
+               <p>Archive list</p>
                 <table className="table">
                     
                     <tbody>

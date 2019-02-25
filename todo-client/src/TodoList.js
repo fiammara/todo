@@ -43,42 +43,37 @@ class TodoList extends Component {
         });
     }
     addInputChanged = (propertyName) => (event) => {
-        alert("hello")
+       
         this.setState({ [propertyName]: event.target.value });
 
     }
-    handleOnAddItem() {
-        this.setState({ isAddCardModalOpen: false });
-    }
+    
     addItem = () => {
 
         const { name } = this.state.newItem;
-      
-        axios.post("http://localhost:8080/api/todos", { name }).then(
+
+        axios.post("http://localhost:8080/api/todos", {name}).then(
             this.getData()
         );
     }
     deleteItem = (e) => {
-       
+
         axios.delete("http://localhost:8080/api/todos/" + e).then(
             this.getData(),
             window.location.reload()
         );
-       
+
     }
     render() {
         return (
             <div>
-               
 
-                <Modal isOpen={this.state.addModal} onRequestClose={this.closeAddModal}>
+                <Modal className="addModal" isOpen={this.state.addModal} onRequestClose={this.closeAddModal}>
                     <ItemAddComponent cancel={this.closeAddModal} add={this.handleOnAddItem} changed={this.addInputChanged} />
                 </Modal>
 
-
+                <p>To do list</p>
                 <table className="table">
-                    
-
                     <tbody>
                         {this.state.todos.map((todo, index) => {
                             return <TodoItem key={todo.id} arrayId={index} data={todo} delete={this.deleteItem} />
@@ -86,7 +81,7 @@ class TodoList extends Component {
                     </tbody>
                 </table>
                 <br />
-                <button onClick={this.openAddModal} className="btn btn-info">Add new</button>
+                <button onClick={this.openAddModal} className="addButton btn btn-info">Add new</button>
             </div>
         );
     }

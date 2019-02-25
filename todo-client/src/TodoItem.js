@@ -1,4 +1,5 @@
 import React from 'react';
+import 'font-awesome/css/font-awesome.min.css';
 
 const TodoItem = (props) => {
     return (
@@ -6,8 +7,12 @@ const TodoItem = (props) => {
 
             <td>{props.data.name}</td>
             <td>
-                <button className="btn btn-danger" onClick={() =>
-                    props.delete(props.data.id)}>Archive</button></td>
+                <button onClick={() =>
+                    props.delete(props.data.id)}>
+                    <i className="fa fa-archive ">
+                    </i>
+                </button>
+            </td>
         </tr>
     )
 }
