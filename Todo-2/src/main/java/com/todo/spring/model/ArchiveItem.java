@@ -1,21 +1,24 @@
 package com.todo.spring.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "archive")
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity (name="archive")
 public class ArchiveItem {
 	
-		@Id	    
-	    private String id;
+	@Id   
+    @Column(name="id")    
+	    private long id;
 
 	    private String name;
 
-		public String getId() {
+		public long getId() {
 			return id;
 		}
 
-		public void setId(String id) {
+		public void setId(long id) {
 			this.id = id;
 		}
 

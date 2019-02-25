@@ -12,7 +12,7 @@ public interface TodoService {
 
 	void addTodo(Todo todo);
 
-	Todo findById(String id);
+	Todo findById(long id);
 
-	void deleteTodo(String id);
+	void deleteTodo(long id);
 }

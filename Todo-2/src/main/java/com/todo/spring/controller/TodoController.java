@@ -35,20 +35,20 @@ public class TodoController {
 	
 	@GetMapping(path = "{id}")
 	@ApiOperation(value = "Get todo", notes = "Returns todo by id")
-	public Todo getTodo(@PathVariable final String id) {
+	public Todo getTodo(@PathVariable final long id) {
 		return todoService.findById(id);
 	}
 	
 	
 	@ApiOperation(value = "Add todo", notes = "Adds new todo")
 	@RequestMapping(method = RequestMethod.POST, value="/addTodo")
-	public String save(@ApiParam @RequestBody Todo todo) {
+	public long save(@ApiParam @RequestBody Todo todo) {
 		todoService.addTodo(todo);
 
 		return todo.getId();
 	}
 	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
-	public String deleteTodo(@PathVariable String id) {
+	public String deleteTodo(@PathVariable long id) {
 		todoService.deleteTodo(id);
 		return "todo deleted";
 	}

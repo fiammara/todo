@@ -31,7 +31,7 @@ public class TodoServiceImpl implements TodoService {
 	}
 
 	@Override
-	public Todo findById(String id) {
+	public Todo findById(long id) {
 		Optional<Todo> result = todoItemRepository.findById(id);
 
 		if (result.isPresent()) {
@@ -42,7 +42,7 @@ public class TodoServiceImpl implements TodoService {
 	}
 
 	@Override
-	public void deleteTodo(String id) {
+	public void deleteTodo(long id) {
 		Todo todo= findById(id);
 		ArchiveItem item=new ArchiveItem();
 		item.setId(id);
