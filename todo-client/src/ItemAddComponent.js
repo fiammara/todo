@@ -23,10 +23,14 @@ class ItemAddComponent extends Component {
 			name: this.state.name,
 
 		}
-
-		axios.post("http://localhost:8080/api/todos/addTodo", newItem).then(window.location.replace('/todos'))
+		
+		if (this.state.name !== undefined) {
+			axios.post("http://localhost:8080/api/todos/addTodo", newItem).then(window.location.replace('/todos'))
+		}
+		else {
+			alert("new item can't be empty")
+		}
 	}
-
 	render() {
 		return (
 
@@ -40,7 +44,6 @@ class ItemAddComponent extends Component {
 							<input
 								type="text"
 								autocomplete="off"
-								className="form-control"
 								value={this.name}
 								onChange={this.handleChangeFor("name")}
 							/>
@@ -53,9 +56,6 @@ class ItemAddComponent extends Component {
 					</form>
 				</div>
 			</div>
-
-
-
 
 		)
 	}

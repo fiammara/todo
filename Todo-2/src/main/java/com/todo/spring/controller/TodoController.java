@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.todo.spring.model.Todo;
 import com.todo.spring.service.TodoService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+
 
 @CrossOrigin
 @RestController
-@Api(value = "todo")
 @RequestMapping("/api/todos")
 
 public class TodoController {
@@ -27,21 +24,18 @@ public class TodoController {
 	
 	
 	@GetMapping
-	@ApiOperation(value = "Get list of todos", notes = "Returns all todos")
 	public List<Todo> findAllTodos() {
 		return todoService.findAllTodos();
 	}
 	
 	@GetMapping(path = "{id}")
-	@ApiOperation(value = "Get todo", notes = "Returns todo by id")
 	public Todo getTodo(@PathVariable final long id) {
 		return todoService.findById(id);
 	}
 	
-	
-	@ApiOperation(value = "Add todo", notes = "Adds new todo")
+
 	@RequestMapping(method = RequestMethod.POST, value="/addTodo")
-	public long save(@ApiParam @RequestBody Todo todo) {
+	public long save(@RequestBody Todo todo) {
 		todoService.addTodo(todo);
 
 		return todo.getId();

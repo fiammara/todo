@@ -42,17 +42,12 @@ class TodoList extends Component {
             addModal: false
         });
     }
-    addInputChanged = (propertyName) => (event) => {
-       
-        this.setState({ [propertyName]: event.target.value });
 
-    }
-    
     addItem = () => {
 
         const { name } = this.state.newItem;
 
-        axios.post("http://localhost:8080/api/todos", {name}).then(
+        axios.post("http://localhost:8080/api/todos", { name }).then(
             this.getData()
         );
     }
@@ -62,14 +57,13 @@ class TodoList extends Component {
             this.getData(),
             window.location.reload()
         );
-
     }
     render() {
         return (
             <div>
 
                 <Modal className="addModal" isOpen={this.state.addModal} onRequestClose={this.closeAddModal}>
-                    <ItemAddComponent cancel={this.closeAddModal} add={this.handleOnAddItem} changed={this.addInputChanged} />
+                    <ItemAddComponent cancel={this.closeAddModal} add={this.handleOnAddItem} />
                 </Modal>
 
                 <p>To do list</p>
@@ -81,7 +75,7 @@ class TodoList extends Component {
                     </tbody>
                 </table>
                 <br />
-                <button onClick={this.openAddModal} className="addButton btn btn-info">Add new</button>
+                <button onClick={this.openAddModal} className="addButton">Add new</button>
             </div>
         );
     }

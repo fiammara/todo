@@ -4,7 +4,6 @@ import 'font-awesome/css/font-awesome.min.css';
 const TodoItem = (props) => {
     return (
         <tr>
-
             <td>{props.data.name}</td>
             <td>
                 <button onClick={() =>

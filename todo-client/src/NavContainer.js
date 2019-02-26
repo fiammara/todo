@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TodoList from './TodoList';
 import ArchiveList from './ArchiveList';
 
@@ -10,14 +10,14 @@ const NavContainer = () => (
             <ul>
                 <li>
                     <button className="Navbutton">
-                    <i className="fa fa-list ">
-                    </i> <Link to="/todos" className="link">Todo List</Link>
+                        <i className="fa fa-list ">
+                        </i> <Link to="/todos" className="link">Todo List</Link>
                     </button>
                 </li>
                 <li>
                     <button className="Navbutton">
-                    <i className="fa fa-archive ">
-                    </i> <Link to="/archive" className="link">Archived</Link>
+                        <i className="fa fa-archive ">
+                        </i> <Link to="/archive" className="link">Archived</Link>
                     </button>
                 </li>
             </ul>
@@ -25,6 +25,7 @@ const NavContainer = () => (
 
             <Route exact path="/archive" component={ArchiveList} />
             <Route exact path="/todos" component={TodoList} />
+
         </div>
     </Router>
 
