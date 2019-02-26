@@ -6,23 +6,23 @@ import ArchiveList from './ArchiveList';
 const NavContainer = () => (
     <Router>
         <div className="NavContainer">
-
-            <ul>
-                <li>
-                    <button className="Navbutton">
-                        <i className="fa fa-list ">
-                        </i> <Link to="/todos" className="link">Todo List</Link>
-                    </button>
-                </li>
-                <li>
-                    <button className="Navbutton">
-                        <i className="fa fa-archive ">
-                        </i> <Link to="/archive" className="link">Archived</Link>
-                    </button>
-                </li>
-            </ul>
-            <hr />
-
+           
+                <ul>
+                    <li>
+                        <button className="NavButton">
+                            <i className="fa fa-list ">
+                            </i> <Link to="/todos" className="link">Todo List</Link>
+                        </button>
+                    </li>
+                    <li>
+                        <button className="NavButton">
+                            <i className="fa fa-archive ">
+                            </i> <Link to="/archive" className="link">Archived</Link>
+                        </button>
+                    </li>
+                </ul>
+                <hr />
+            
             <Route exact path="/archive" component={ArchiveList} />
             <Route exact path="/todos" component={TodoList} />
 

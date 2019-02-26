@@ -6,16 +6,10 @@
 .NavContainer {
   background-color:#404d64;
   float:left;
-  
+  width:500px;
 }
-.BodyContainer {
-  background-color:#404d64;
-  float:left;
-  margin-left:20px;
-  width:700px;
-  color:#abb6c9;
-}
-.Navbutton {
+
+.NavButton {
   float:left;
   background-color:#404d64;
   width:100px;
