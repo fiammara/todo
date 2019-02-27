@@ -29,7 +29,7 @@ class ArchiveList extends Component {
     
     render() {
         return (
-            <div>
+            <div className="archiveList">
                <p>Archive list</p>
                 <table className="table">
                     

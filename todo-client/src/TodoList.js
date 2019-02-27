@@ -60,7 +60,7 @@ class TodoList extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="todoList">
 
                 <Modal className="addModal" isOpen={this.state.addModal} onRequestClose={this.closeAddModal}>
                     <ItemAddComponent cancel={this.closeAddModal} add={this.handleOnAddItem} />
