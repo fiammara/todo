@@ -1,6 +1,7 @@
 package com.todo.spring.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +36,7 @@ public class TodoController {
 	
 
 	@RequestMapping(method = RequestMethod.POST, value="/addTodo")
-	public long save(@RequestBody Todo todo) {
+	public long save(@RequestBody @Valid Todo todo) {
 		todoService.addTodo(todo);
 
 		return todo.getId();

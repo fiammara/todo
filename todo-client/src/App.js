@@ -1,19 +1,34 @@
-import React, { Component } from 'react';
-import './App.css';
-import Main from './Main.js';
-import NavContainer from './NavContainer';
+import React from "react";
+import "./App.css";
+import { NavLink } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import TodoList from "./TodoList";
+import ArchiveList from "./ArchiveList";
 
+const App = () => (
+    <BrowserRouter>
+        <div>
+        <div className="NavContainer"> 
+            <button className="NavButton">
+                <NavLink to="/">Home</NavLink>
+            </button>
 
-class App extends Component {
-  render() {
-    return (
+            <button className="NavButton">
+                <i className="fa fa-list " />
+                <NavLink to={{ pathname: "/todos" }}>Todo list</NavLink>
+            </button>
 
-      <div className='app'>
-        <NavContainer />
-        <Main />
-      </div>
-    );
-  }
-}
+            <button className="NavButton">
+                <i className="fa fa-archive " />
+                <NavLink to={{ pathname: "/archive" }}>Archived</NavLink>
+            </button>
+        </div>
+            <Switch>
+                <Route exact path="/archive" component={ArchiveList} />
+                <Route exact path="/todos" component={TodoList} />
+            </Switch>
+        </div>
+    </BrowserRouter>
+);
 
 export default App;

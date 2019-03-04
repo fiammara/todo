@@ -37,7 +37,6 @@ public class ServiceTest3 {
 	@Autowired
 	private ArchiveService archiveService;
 
-	
 	@After
 	@Before
 	public void afterEachCase() {
@@ -65,7 +64,7 @@ public class ServiceTest3 {
 		assertEquals(ID, loaded.getId());
 
 	}
-	
+
 	@Test
 	public void test_deleteById() {
 		Todo todo = createDummy();

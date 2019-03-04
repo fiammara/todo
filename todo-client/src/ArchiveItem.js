@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-const ArchiveItem = (props) => {
+const ArchiveItem = props => {
     return (
         <tr>
             <td>{props.data.name}</td>
         </tr>
-    )
-}
+    );
+};
 
 export default ArchiveItem;
